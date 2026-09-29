@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Center Zero Mile Pillar Symbol inside 66dp safe zone (21 to 87) -->
+    <!-- Base pedestal -->
+    <path
+        android:fillColor="#80CBC4"
+        android:pathData="M34,74 h40 v4 h-40 z" />
+    <path
+        android:fillColor="#E0F2F1"
+        android:pathData="M38,70 h32 v4 h-32 z" />
+    <!-- Milestone Column / Obelisk Body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,42 L45,70 h18 L66,42 L54,32 Z" />
+    <!-- Stylized 0 / Zero Marker at core of milestone -->
+    <path
+        android:fillColor="#004D40"
+        android:pathData="M54,46 C50.5,46 48,49 48,54 C48,59 50.5,62 54,62 C57.5,62 60,59 60,54 C60,49 57.5,46 54,46 Z M54,58 C52.5,58 51.5,56.5 51.5,54 C51.5,51.5 52.5,50 54,50 C55.5,50 56.5,51.5 56.5,54 C56.5,56.5 55.5,58 54,58 Z" />
+    <!-- Civic Radio / Beacon Pulse Lines -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#80DEEA"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M36,36 C41,31 47,28 54,28 C61,28 67,31 72,36" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#26C6DA"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M30,30 C37,23 45,19 54,19 C63,19 71,23 78,30" />
+    <!-- Beacon Crown Diamond / Star at top of milestone -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M54,26 L56.5,31 L54,33.5 L51.5,31 Z" />
+</vector>

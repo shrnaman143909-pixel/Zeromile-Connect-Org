@@ -1,0 +1,6 @@
+{
+  "name": "Zeromile Connect",
+  "description": "AI-powered civic-service platform for citizens of Nagpur.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

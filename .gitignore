@@ -1,0 +1,54 @@
+# Built application & compilation artifacts
+*.iml
+.gradle/
+.kotlin/
+build/
+/build/
+app/build/
+.build-outputs/
+dist/
+out/
+captures/
+.externalNativeBuild/
+.cxx/
+node_modules/
+
+# Local Android SDK configuration
+local.properties
+/local.properties
+
+# Secrets & Environment variables (never commit real credentials)
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# Keystores & sensitive signing certificates
+*.jks
+*.keystore
+debug.keystore
+debug.keystore.base64
+
+# IDE, Editor & OS artifacts
+.idea/
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml/
+/.idea/workspace.xml/
+/.idea/navEditor.xml/
+/.idea/assetWizardSettings.xml/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.temp
+
+# Test coverage & heap dumps
+coverage/
+*.hprof
+roborazzi/
+
