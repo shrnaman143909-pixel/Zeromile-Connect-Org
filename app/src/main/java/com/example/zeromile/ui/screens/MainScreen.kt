@@ -25,7 +25,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Campaign
-import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
@@ -395,7 +395,7 @@ private fun getTabMeta(tab: NavTab): Pair<String, ImageVector> {
         NavTab.HOME -> Pair("Home", Icons.Default.Home)
         NavTab.SERVICES -> Pair("Services", Icons.Default.Build)
         NavTab.AI -> Pair("AI", Icons.Default.AutoAwesome)
-        NavTab.ASSISTANT -> Pair("Assistant", Icons.Default.Chat)
+        NavTab.ASSISTANT -> Pair("Assistant", Icons.AutoMirrored.Filled.Chat)
         NavTab.ACTIVITY -> Pair("Activity", Icons.Default.History)
         NavTab.PROFILE -> Pair("Profile", Icons.Default.AccountCircle)
         NavTab.EMERGENCY -> Pair("Emergency", Icons.Default.Warning)

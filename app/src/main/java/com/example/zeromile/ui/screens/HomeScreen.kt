@@ -21,7 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Campaign
-import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.filled.CloudDone
 import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.History
@@ -191,7 +191,7 @@ fun HomeScreen(
                 // Assistant entry point: conversational help without starting a complaint.
                 ZeromileButton(
                     text = stringResource(R.string.assistant_cta),
-                    icon = Icons.Default.Chat,
+                    icon = Icons.AutoMirrored.Filled.Chat,
                     onClick = { onNavigateTab(NavTab.ASSISTANT) },
                     variant = ButtonVariant.TEXT,
                     modifier = Modifier.fillMaxWidth(),

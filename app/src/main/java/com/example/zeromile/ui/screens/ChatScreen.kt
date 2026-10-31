@@ -151,7 +151,8 @@ fun ChatScreen(
     // Keep the newest bubble in view while the assistant is thinking or answering.
     LaunchedEffect(uiState.messages.size, uiState.isSending) {
         if (uiState.messages.isNotEmpty()) {
-            listState.animateScrollToItem(uiState.messages.size)
+            val lastIndex = if (uiState.isSending) uiState.messages.size else uiState.messages.size - 1
+            listState.animateScrollToItem(lastIndex)
         }
     }
 

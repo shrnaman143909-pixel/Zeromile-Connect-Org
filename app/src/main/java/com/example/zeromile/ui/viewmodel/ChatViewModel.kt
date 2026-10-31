@@ -9,7 +9,6 @@ import com.example.zeromile.ai.ChatTurn
 import com.example.zeromile.ai.ChatTurnPart
 import com.example.zeromile.ai.GeminiChatClient
 import com.example.zeromile.data.model.ChatAction
-import com.example.zeromile.data.model.ChatActionKind
 import com.example.zeromile.data.model.ChatMessage
 import com.example.zeromile.data.model.ChatRole
 import com.example.zeromile.data.model.ChatUiState
@@ -112,8 +111,25 @@ class ChatViewModel(
         }
 
         history.add(ChatTurn.user(message))
+        trimHistory()
         viewModelScope.launch {
             runAssistantTurn(userId = userId, userName = userName)
+        }
+    }
+
+    /**
+     * Keeps the wire transcript bounded. Trimming only from the front can leave an orphaned
+     * functionResponse turn (which the API rejects), so any leading tool responses are dropped
+     * along with it.
+     */
+    private fun trimHistory() {
+        while (history.size > MAX_HISTORY_TURNS) {
+            history.removeAt(0)
+        }
+        while (history.isNotEmpty() &&
+            history.first().parts.any { it is ChatTurnPart.FunctionResponse }
+        ) {
+            history.removeAt(0)
         }
     }
 
@@ -283,6 +299,9 @@ class ChatViewModel(
     companion object {
         /** Tool round-trips allowed per user message before giving up. */
         private const val MAX_TOOL_ROUNDS = 4
+
+        /** Wire turns kept in context; roughly ten exchanges. */
+        private const val MAX_HISTORY_TURNS = 20
         private val COMPLAINT_NUMBER_REGEX = Regex("NMC-\\d{4}-\\d{6}", RegexOption.IGNORE_CASE)
 
         /**
