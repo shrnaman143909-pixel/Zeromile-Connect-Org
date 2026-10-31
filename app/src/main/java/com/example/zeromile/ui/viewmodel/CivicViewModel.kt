@@ -43,6 +43,7 @@ enum class NavTab {
     HOME,
     SERVICES,
     AI,
+    ASSISTANT,
     ACTIVITY,
     PROFILE,
     EMERGENCY,
@@ -120,6 +121,13 @@ class CivicViewModel(
 
     val currentUserId: String
         get() = _uiState.value.profile?.userId ?: activeCitizenUserId
+
+    /**
+     * Shared data layer, exposed so the assistant chat runs against the same repository
+     * instance (and therefore the same local complaint cache) as the citizen screens.
+     */
+    val dataRepository: CivicRepository
+        get() = repository
 
     private val _uiState = MutableStateFlow(CivicUiState())
     val uiState: StateFlow<CivicUiState> = _uiState.asStateFlow()

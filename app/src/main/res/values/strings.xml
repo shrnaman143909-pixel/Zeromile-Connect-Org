@@ -39,4 +39,6 @@
     <string name="ai_speech_error">Something went wrong with voice input.</string>
     <string name="ai_speech_ready">Ready for Phase 3 AI classification</string>
     <string name="profile_title">Citizen Profile</string>
+    <string name="assistant_cta">Ask Zeromile AI a question</string>
+    <string name="assistant_title">Zeromile AI</string>
 </resources>

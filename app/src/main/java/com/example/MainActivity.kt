@@ -16,6 +16,7 @@ import com.example.ui.theme.MyApplicationTheme
 import com.example.zeromile.ui.admin.AdminScreen
 import com.example.zeromile.ui.screens.MainScreen
 import com.example.zeromile.ui.viewmodel.AdminViewModel
+import com.example.zeromile.ui.viewmodel.ChatViewModel
 import com.example.zeromile.ui.viewmodel.CivicViewModel
 
 enum class AppExperience {
@@ -26,6 +27,9 @@ enum class AppExperience {
 class MainActivity : ComponentActivity() {
   private val civicViewModel: CivicViewModel by viewModels()
   private val adminViewModel: AdminViewModel by viewModels()
+  private val chatViewModel: ChatViewModel by viewModels {
+    ChatViewModel.factory(civicViewModel.dataRepository)
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -39,6 +43,7 @@ class MainActivity : ComponentActivity() {
             AppExperience.CITIZEN -> {
               MainScreen(
                 viewModel = civicViewModel,
+                chatViewModel = chatViewModel,
                 onOpenAdminPortal = { currentExperience = AppExperience.ADMIN }
               )
             }

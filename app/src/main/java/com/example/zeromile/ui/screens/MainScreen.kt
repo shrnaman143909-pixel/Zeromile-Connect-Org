@@ -25,6 +25,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Campaign
+import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
@@ -62,6 +63,7 @@ import com.example.zeromile.ui.components.ZeromileButton
 import com.example.zeromile.ui.components.ZeromileInput
 import com.example.zeromile.ui.components.ZeromileModal
 import com.example.zeromile.ui.components.ZeromileStatusBadge
+import com.example.zeromile.ui.viewmodel.ChatViewModel
 import com.example.zeromile.ui.viewmodel.CivicUiState
 import com.example.zeromile.ui.viewmodel.CivicViewModel
 import com.example.zeromile.ui.viewmodel.NavTab
@@ -70,6 +72,7 @@ import com.example.zeromile.ui.viewmodel.UiState
 @Composable
 fun MainScreen(
     viewModel: CivicViewModel,
+    chatViewModel: ChatViewModel,
     onOpenAdminPortal: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
@@ -136,6 +139,7 @@ fun MainScreen(
                         TabContent(
                             uiState = uiState,
                             viewModel = viewModel,
+                            chatViewModel = chatViewModel,
                             onOpenAdminPortal = onOpenAdminPortal
                         )
                     }
@@ -193,6 +197,7 @@ fun MainScreen(
                     TabContent(
                         uiState = uiState,
                         viewModel = viewModel,
+                        chatViewModel = chatViewModel,
                         onOpenAdminPortal = onOpenAdminPortal
                     )
 
@@ -300,6 +305,7 @@ fun MainScreen(
 private fun TabContent(
     uiState: CivicUiState,
     viewModel: CivicViewModel,
+    chatViewModel: ChatViewModel,
     onOpenAdminPortal: () -> Unit = {}
 ) {
     AnimatedContent(
@@ -334,6 +340,17 @@ private fun TabContent(
                 AiScreen(
                     uiState = uiState,
                     viewModel = viewModel
+                )
+            }
+            NavTab.ASSISTANT -> {
+                ChatScreen(
+                    chatViewModel = chatViewModel,
+                    userId = viewModel.currentUserId,
+                    userName = uiState.profile?.fullName,
+                    onBack = { viewModel.setTab(NavTab.HOME) },
+                    onStartComplaint = { description -> viewModel.openVoiceAssistant(description) },
+                    onOpenServices = { viewModel.setTab(NavTab.SERVICES) },
+                    onOpenActivity = { viewModel.setTab(NavTab.ACTIVITY) }
                 )
             }
             NavTab.ACTIVITY -> {
@@ -378,6 +395,7 @@ private fun getTabMeta(tab: NavTab): Pair<String, ImageVector> {
         NavTab.HOME -> Pair("Home", Icons.Default.Home)
         NavTab.SERVICES -> Pair("Services", Icons.Default.Build)
         NavTab.AI -> Pair("AI", Icons.Default.AutoAwesome)
+        NavTab.ASSISTANT -> Pair("Assistant", Icons.Default.Chat)
         NavTab.ACTIVITY -> Pair("Activity", Icons.Default.History)
         NavTab.PROFILE -> Pair("Profile", Icons.Default.AccountCircle)
         NavTab.EMERGENCY -> Pair("Emergency", Icons.Default.Warning)
